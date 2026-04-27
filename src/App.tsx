@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import "./App.css";
 type ImageInfo = {
   width: number;
   height: number;
@@ -557,7 +557,7 @@ export default function App() {
   };
 
   return (
-    <div
+    <div className="app-shell"
   style={{
   height: "100vh",
   display: "flex",
@@ -566,17 +566,16 @@ export default function App() {
   color: "white",
   padding: 0,
   overflow: "hidden",
+  
 }}
 >
   <div
-      style={{
-      flex: 1,
-        display: "flex",
-        minHeight: 0,
-      }}
-    > 
+  className="editor-layout"
+  style={{ flex: 1, display: "flex", minHeight: 0 }}
+>
       {/* LEFT PANEL */}
       <div
+      className="preview-panel"
         style={{
           flex: 1,
           display: "flex",
@@ -598,7 +597,7 @@ export default function App() {
           }}
         >
           <div>
-            <div style={{ fontSize: 24, fontWeight: 700 }}>Preview Stage</div>
+            <div style={{ fontSize: window.innerWidth <= 768 ? 18 : 24, fontWeight: 700 }}>Preview Stage</div>
             <div style={{ fontSize: 14, color: "#94a3b8", marginTop: 4 }}>
               {imageInfo
                 ? `${imageInfo.width} × ${imageInfo.height}`
@@ -607,7 +606,13 @@ export default function App() {
           </div>
 
           {sourceUrl && (
-            <div style={{ display: "flex", gap: 8 }}>
+            <div
+  style={{
+    display: "flex",
+    gap: 8,
+    flexShrink: 0,
+  }}
+>
   <select
     value={downloadFormat}
     onChange={(e) => setDownloadFormat(e.target.value as "png" | "jpg")}
@@ -653,9 +658,10 @@ onMouseLeave={(e) => {
         </div>
 
         <div
-          style={{
-            flex: 1,
-            border: "2px dashed rgba(255,255,255,0.2)",
+  className="image-drop-zone"
+  style={{
+    flex: 1,
+    border: "2px dashed rgba(255,255,255,0.2)",
             borderRadius: 16,
             display: "flex",
             alignItems: "center",
@@ -884,6 +890,7 @@ boxShadow: "0 0 12px #ffffff66",
 
       {/* RIGHT PANEL */}
       <div
+      className="controls-panel"
         style={{
           width: 320,
           padding: 16,
@@ -894,7 +901,9 @@ boxShadow: "0 0 12px #ffffff66",
           boxSizing: "border-box",
         }}
       >
-        <h2 style={{ fontSize: 22, margin: 0 }}>Controls</h2>
+        <h2 style={{ fontSize: window.innerWidth <= 768 ? 18 : 22, margin: 0 }}>
+  Controls
+</h2>
 
 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
   <div style={{ fontSize: 14, color: "#cbd5e1" }}>Presets</div>
