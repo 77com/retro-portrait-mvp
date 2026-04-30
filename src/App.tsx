@@ -661,13 +661,22 @@ onMouseLeave={(e) => {
   className="image-drop-zone"
   style={{
     flex: 1,
-    border: "2px dashed rgba(255,255,255,0.2)",
+    border: isDragging
+  ? "2px dashed #93c5fd"
+  : "2px dashed rgba(255,255,255,0.2)",
             borderRadius: 16,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             overflow: "hidden",
-            background: isDragging ? "rgba(255,255,255,0.06)" : "transparent",
+            background: isDragging
+  ? "#1e293b"
+  : "transparent",
+  boxShadow: isDragging
+  ? "inset 0 0 0 1px #60a5fa, 0 0 30px #60a5fa33"
+  : "none",
+  transition: "all 0.2s ease",
+  transform: isDragging ? "scale(1.02)" : "scale(1)",
             minHeight: 0,
             position: "relative",
           }}
@@ -716,8 +725,8 @@ onMouseLeave={(e) => {
           {!sourceUrl ? (
             <div style={{ textAlign: "center", padding: 24 }}>
               <div style={{ fontSize: 32, fontWeight: 700, marginBottom: 12 }}>
-                IMAGE AREA
-              </div>
+  {isDragging ? "Отпусти файл здесь" : "IMAGE AREA"}
+</div>
               <div
                 style={{
                   fontSize: 15,
@@ -727,7 +736,9 @@ onMouseLeave={(e) => {
                   lineHeight: 1.6,
                 }}
               >
-                Перетащи изображение сюда или выбери файл ниже.
+                {isDragging
+  ? "Мы готовы принять файл 👇"
+  : "Перетащи изображение сюда или выбери файл ниже."}
               </div>
 
               <label
