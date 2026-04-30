@@ -1093,7 +1093,13 @@ onMouseLeave={(e) => {
       e.currentTarget.style.color = "rgba(255,255,255,0.55)";
     }}
   >
+    <a
+  href="https://sibashvili.com/"
+  style={{ color: "#94a3b8", textDecoration: "none" }}
+>
     ← Back
+    </a>
+
   </div>
 
   <div
@@ -1117,7 +1123,14 @@ onMouseLeave={(e) => {
       e.currentTarget.style.color = "rgba(255,255,255,0.55)";
     }}
   >
+
+    <a
+  href="https://sibashvili.com/contact.html"
+  style={{ color: "#94a3b8", textDecoration: "none" }}
+>
     Contacts
+</a>
+
   </div>
 </div>
 
