@@ -597,11 +597,11 @@ export default function App() {
           }}
         >
           <div>
-            <div style={{ fontSize: window.innerWidth <= 768 ? 18 : 24, fontWeight: 700 }}>Preview Stage</div>
+            <div style={{ fontSize: window.innerWidth <= 768 ? 18 : 24, fontWeight: 700 }}>Upload your photo</div>
             <div style={{ fontSize: 14, color: "#94a3b8", marginTop: 4 }}>
               {imageInfo
                 ? `${imageInfo.width} × ${imageInfo.height}`
-                : "Upload an image"}
+                : "Transform it into a timeless portrait"}
             </div>
           </div>
 
@@ -1108,7 +1108,7 @@ onMouseLeave={(e) => {
       opacity: 0.7,
     }}
   >
-    Crafted for timeless portraits
+    Transform your photos into timeless portraits
   </div>
 
   <div
