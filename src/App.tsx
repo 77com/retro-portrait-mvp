@@ -601,7 +601,7 @@ export default function App() {
             <div style={{ fontSize: 14, color: "#94a3b8", marginTop: 4 }}>
               {imageInfo
                 ? `${imageInfo.width} × ${imageInfo.height}`
-                : "Загрузите изображение"}
+                : "Upload an image"}
             </div>
           </div>
 
@@ -738,7 +738,7 @@ onMouseLeave={(e) => {
               >
                 {isDragging
   ? "Мы готовы принять файл 👇"
-  : "Перетащи изображение сюда или выбери файл ниже."}
+  : "Drag and drop an image here or choose a file below."}
               </div>
 
               <label
@@ -752,7 +752,7 @@ onMouseLeave={(e) => {
                   fontWeight: 600,
                 }}
               >
-                Выбрать файл
+                Choose file
                 <input
                   type="file"
                   accept="image/*"
