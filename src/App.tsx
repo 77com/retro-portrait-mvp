@@ -796,7 +796,7 @@ onMouseLeave={(e) => {
       pointerEvents: "none",
     }}
   >
-    Результат
+    Result
   </div>
 )}
 
@@ -815,7 +815,7 @@ onMouseLeave={(e) => {
       pointerEvents: "none",
     }}
   >
-    Оригинал
+    Original
   </div>
 )}
               <div
