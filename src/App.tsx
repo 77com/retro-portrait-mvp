@@ -139,6 +139,42 @@ drawDust(ctx, width, height, options.dust);
 drawScratches(ctx, width, height, options.scratches);
 }
 
+function applyPopArtEffect(
+  ctx: CanvasRenderingContext2D,
+  width: number,
+  height: number
+) {
+
+const imageData = ctx.getImageData(0, 0, width, height);
+const data = imageData.data;
+for (let i = 0; i < data.length; i += 4) {
+  const r = data[i];
+  const g = data[i + 1];
+  const b = data[i + 2];
+
+  const average = (r + g + b) / 3;
+
+  if (average > 180) {
+    data[i] = 255;
+    data[i + 1] = 240;
+    data[i + 2] = 0;
+  } else if (average > 100) {
+    data[i] = 255;
+    data[i + 1] = 0;
+    data[i + 2] = 120;
+  } else {
+    data[i] = 20;
+    data[i + 1] = 20;
+    data[i + 2] = 20;
+  }
+}
+
+ctx.putImageData(imageData, 0, 0);
+
+}
+
+
+
 function drawDust(
   ctx: CanvasRenderingContext2D,
   width: number,
@@ -344,6 +380,16 @@ const PRESETS = {
     scratches: 0,
     filmTexture: 3,
   },
+  popArt: {
+  label: "Pop Art",
+  contrast: 20,
+  grain: 0,
+  vignette: 0,
+  sepia: 0,
+  dust: 0,
+  scratches: 0,
+  filmTexture: 0,
+},
 };
 
 export default function App() {
@@ -427,15 +473,21 @@ export default function App() {
       ctx.clearRect(0, 0, fitted.width, fitted.height);
       ctx.drawImage(img, 0, 0, fitted.width, fitted.height);
 
-      applyVintageFilters(ctx, fitted.width, fitted.height, {
-        contrast,
-        grain,
-        vignette,
-        sepia,
-        dust,
-        scratches,
-        filmTexture,
-      });
+
+  if (activePreset === "popArt") {
+  applyPopArtEffect(ctx, fitted.width, fitted.height);
+} else {
+  applyVintageFilters(ctx, fitted.width, fitted.height, {
+    contrast,
+    grain,
+    vignette,
+    sepia,
+    dust,
+    scratches,
+    filmTexture,
+  });
+}
+
 
       setIsReady(true);
     };
